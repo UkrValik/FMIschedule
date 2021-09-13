@@ -6,11 +6,12 @@ mongoose.connect("mongodb+srv://fmi_bot:IjDWpEXik0sqVgaZ@cluster0.z68qj.mongodb.
 
 const botToken = "1912321731:AAGdN_HjxhvqE-hCiAe8bFDLtLOXzcTQRdY";
 
-const bot = new TelegramBot(botToken, { polling: true });
+const bot = new Telegraf(botToken);
 
-bot.command('/start', (ctx) => {
+bot.command('start', (ctx) => {
     ctx.reply('Привіт! Цей тестовий бот може показати тобі твій розклад. Спочатку вкажи із якої ти групи.');
 });
+bot.launch();
 
 const app = express();
 
