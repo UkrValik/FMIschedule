@@ -3,7 +3,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const { Telegraf } = require("telegraf");
-const { greeting } = require("./logic");
+const { greeting, setGroup } = require("./logic");
 
 mongoose.connect("mongodb+srv://fmi_bot:IjDWpEXik0sqVgaZ@cluster0.z68qj.mongodb.net/fmi_schedule?retryWrites=true&w=majority");
 
@@ -12,6 +12,7 @@ const botToken = "1912321731:AAGdN_HjxhvqE-hCiAe8bFDLtLOXzcTQRdY";
 const bot = new Telegraf(botToken);
 
 bot.command('start', (ctx) => greeting(ctx));
+bot.command('group', (ctx) => setGroup(ctx));
 bot.launch();
 
 const app = express();
